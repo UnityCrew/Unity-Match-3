@@ -12,7 +12,7 @@ public class ScoreManager : MonoBehaviour
         private set
         {
             score = value;
-            textField.text = "Score: " + score;
+            textField.text = "Score: " + 100 * score;
         }
     }
 
@@ -32,5 +32,6 @@ public class ScoreManager : MonoBehaviour
         if (!textField)
             Destroy(this);
         Score = 0;
+
     }
 }
