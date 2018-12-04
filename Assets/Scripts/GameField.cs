@@ -27,8 +27,9 @@ public class GameField : MonoBehaviour
     private Point swappedTile;
     public GameObject[] TilePrefabs;
 
-    private void Start() { 
-    
+    private void Start()
+    {
+        TimeManager.OnTimeUp = OnTimeUp;
         var spriteRenderer = BackgroundPrefab.GetComponent<SpriteRenderer>();
         var texture = spriteRenderer.sprite.texture;
         // Adjust to Unity units
@@ -74,6 +75,13 @@ public class GameField : MonoBehaviour
             tileComponent.MoveToPoint(backgroundTiles[column, y].position);
             break;
         }
+    }
+
+    private void OnTimeUp()
+    {
+        Time.timeScale = 0f;
+        GameoverLabel.SetActive(true);
+        GameoverButton.SetActive(true);
     }
 
     // Update is called once per frame
